@@ -70,11 +70,6 @@ def delete_last():
     return json.dumps(app.myfood.delete_last()) + '\n'
 
 
-@app.route('/watch', methods=['GET'])
-def watch():
-    return str(app.myfood.watch())
-
-
 @app.route('/print_my_food_button', methods=['GET'])
 def print_my_food_button():
     return flask.redirect('{}/print_my_food_site'.format(address))
@@ -156,8 +151,7 @@ def show_page():
 
         </body>
         </html>
-        """,
-        **app.myfood.watch()
+        """
     )
 
 
@@ -205,5 +199,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.init_db:
         init_db(args.mft)
-    address = 'http://{}:{}'.format(args.server_address, args.port)
+    app.config.update(
+        SESSION_COOKIE_DOMAIN = DOMAIN,
+        SESSION_COOKIE_NAME = DOMAIN,
+    )
+    address = 'http://{}'.format(DOMAIN)
     app.run(args.server_address, args.port, debug=True, threaded=True)
