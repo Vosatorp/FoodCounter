@@ -1,4 +1,4 @@
 DBNAME = 'postgres'
 USER = 'postgres'
-PASSWORD = '659009'
+PASSWORD = ''
 DOMAIN = 'fc.sz.ru'
