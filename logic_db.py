@@ -229,9 +229,6 @@ class MyFood:
         '''.format(mx_dt))
         dbe(conn)
 
-    def watch(self):
-        return {'arg': self.actual_intake()}
-
 # -------------------------- DATABASE CREATING --------------------------
 
 
