@@ -199,9 +199,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.init_db:
         init_db(args.mft)
-    app.config.update(
-        SESSION_COOKIE_DOMAIN = DOMAIN,
-        SESSION_COOKIE_NAME = DOMAIN,
-    )
     address = 'http://{}'.format(DOMAIN)
     app.run(args.server_address, args.port, debug=True, threaded=True)
